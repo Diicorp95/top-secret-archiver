@@ -1,4 +1,6 @@
 # Top-Secret Archiver
+[![CodeFactor](https://www.codefactor.io/repository/github/diicorp95/top-secret-archiver/badge?s=7eaa235a95e34af54331a6ca7ba310717b8f5cff)](https://www.codefactor.io/repository/github/diicorp95/top-secret-archiver)
+## Description
 **Archiver of your top-secret files.** Written in Bash script.
 
 In fact, the script simply [archives](#Compression-parameters) specified directory using 7-zip (not recursively). Password for archive is set by user during script runtime.
