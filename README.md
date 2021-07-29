@@ -7,3 +7,4 @@ In fact, the script simply [archives](#Compression-parameters) specified directo
 ## Releases
 [&#42;unix](https://en.wikipedia.org/wiki/Unix-like) [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 ## Compression parameters
+7z a -t7z *generated filename* **<directory>** *-p option if password is set* -mhe -mx=3 -ms=off
