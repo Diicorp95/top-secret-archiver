@@ -1,2 +1,4 @@
-# top-secret-archiver
-(Bash) Archiver of your top-secret files
+# Top-Secret Archiver
+**Archiver of your top-secret files.**
+## Requires
+* 7-zip
