@@ -8,3 +8,6 @@ In fact, the script simply [archives](#Compression-parameters) specified directo
 * [7-zip](https://www.7-zip.org/) in [%PATH% or $PATH](https://en.wikipedia.org/wiki/PATH_(variable))
 ## Compression parameters
 7z a -t7z *`generated filename`* *`<directory>`* *`-p option if password is set`* -mhe -mx=3 -ms=off
+<hr>
+
+:copyright: Diicorp95, 2021. Licensed under [MIT license](https://diicorp95.mit-license.org).
