@@ -10,8 +10,8 @@ echo "Top-Secret Archiver: Archiver of your top-secret files."
 echo -e "(c) Diicorp95. MIT License.\n"
 
 # Modules
-randpw(){ < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c72;} # https://www.howtogeek.com/howto/30184/10-ways-to-generate-a-random-password-from-the-command-line/
-prompt_confirm(){ while true;do read -r -n 1 -p "${1:-Continue?} [y/n]: " REPLY;case $REPLY in [yY])echo;return 1;;[nN])echo;return 0;;*)printf " \033[31m %s \n\033[0m" "invalid input";;esac;done;} # https://stackoverflow.com/a/32708121/13976788
+randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c72; } # https://www.howtogeek.com/howto/30184/10-ways-to-generate-a-random-password-from-the-command-line/
+prompt_confirm() { while true;do read -r -n 1 -p "${1:-Continue?} [y/n]: " REPLY;case $REPLY in [yY])echo;return 1;;[nN])echo;return 0;;*)printf "\033[31m%s\n\033[0m" "Invalid input";;esac;done; } # https://stackoverflow.com/a/32708121/13976788
 
 # https://stackoverflow.com/a/677212/13976788
 command -v 7z >/dev/null 2>&1 || { echo >&2 "7-Zip execution failed."; exit 1; }
@@ -38,7 +38,7 @@ else
 	option_password+='"'
 fi
 
-prefix='top-secret'
+prefix = 'top-secret'
 
 # Prefix check
 if [ "$2" != '' ];
@@ -48,11 +48,11 @@ fi
 prefix+='_'
 
 # Filename for archive
-new_filename=$prefix
-randn=$(date | md5sum)
-new_filename+=${randn:0:12}
-new_filename+='_'
-new_filename+=$(date +%Y-%m-%d)
+new_filename = $prefix
+randn = $(date | md5sum) # isn't used to generate a password
+new_filename += ${randn:0:12}
+new_filename += '_'
+new_filename += $(date +%Y-%m-%d)
 
 # Add to archive
 
