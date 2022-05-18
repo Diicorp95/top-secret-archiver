@@ -6,8 +6,8 @@
 # shellcheck disable=SC2090  # Adding intentional quotation marks
 
 # https://github.com/Diicorp95/top-secret-archiver
-echo "Top-Secret Archiver: Archiver of your top-secret files."
-echo -e "(c) Diicorp95. MIT License.\n"
+echo "Top-Secret Archiver: Archiver of your top-secret files.";
+echo -e "(c) Diicorp95. MIT License.\n";
 
 # Modules
 randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c72; } # https://www.howtogeek.com/howto/30184/10-ways-to-generate-a-random-password-from-the-command-line/
@@ -20,39 +20,43 @@ command -v 7z >/dev/null 2>&1 || { echo >&2 "7-Zip execution failed."; exit 1; }
 if [ "$1" == '-h' ] || [ "$1" == '--help' ] || [ "$1" == '' ] || [ ! -d "$1" ];
 then
     # Else display synopsis
-	echo -e "Usage: $0 <directory> [prefix]\n"
-	exit 1
+	echo -e "Usage: $0 <directory> [prefix]\n";
+	exit 1;
 fi
 
-work_with_dir="$1"
-password=
-read -s -p -r "Set password for archive: " password
+work_with_dir = "$1";
+password =
+read -s -p -r "Set password for archive: " password;
 
 # If password is not entered...
 if [ "$password" == '' ];
 then
-	prompt_confirm "Generate password?" || (password=randpw)
+	prompt_confirm "Generate password?" || (password = randpw);
+	printf "Password:\n\033[32m%s\033[0m" password;
+	while true; do
+		prompt_confirm "Ready?" || break;
+	done;
 else
-	option_password='-p"'
-	option_password+="$password"
-	option_password+='"'
+	option_password = '-p"';
+	option_password += "$password";
+	option_password += '"';
 fi
 
-prefix = 'top-secret'
+prefix = 'top-secret';
 
 # Prefix check
 if [ "$2" != '' ];
 then
-	prefix=$2
+	prefix = $2;
 fi
-prefix+='_'
+prefix += '_';
 
 # Filename for archive
-new_filename = $prefix
-randn = $(date | md5sum) # isn't used to generate a password
-new_filename += ${randn:0:12}
-new_filename += '_'
-new_filename += $(date +%Y-%m-%d)
+new_filename = $prefix;
+randn = $(date | md5sum); # isn't used to generate a password
+new_filename += ${randn:0:12};
+new_filename += '_';
+new_filename += $(date +%Y-%m-%d);
 
 # Add to archive
 
